@@ -1,0 +1,210 @@
+{% extends "user/base.html.twig" %}
+
+{% block title %}{{ 'uprofile.title'|trans }}{% endblock %}
+
+{% block body %}
+    <style>
+        body {
+            background: linear-gradient(135deg, #1b1f2a, #2a3b4d);
+            font-family: 'Arial', sans-serif;
+            color: #eaeaea;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #ffc107;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .my-4 {
+            margin: 2rem 0;
+        }
+
+        .mb-5 {
+            margin-bottom: 3rem;
+        }
+
+        section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            margin: 2rem auto;
+            padding: 1.5rem;
+            max-width: 800px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        table thead th {
+            background: #34495e;
+            color: #fff;
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        table tbody td {
+            background: #2c3e50;
+            color: #eaeaea;
+            padding: 0.75rem;
+            border-top: 1px solid #34495e;
+        }
+
+        table tbody tr:nth-child(even) td {
+            background: #3d556f;
+        }
+
+        .btn {
+            display: inline-block;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .btn-primary {
+            background-color: #3498db;
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+
+        .btn-danger {
+            background-color: #e74c3c;
+        }
+
+        .btn-danger:hover {
+            background-color: #c0392b;
+        }
+
+        .btn-success {
+            background-color: #2ecc71;
+        }
+
+        .btn-success:hover {
+            background-color: #27ae60;
+        }
+
+        a {
+            color: #ffc107;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+    <h1 class="text-center my-4">{{ 'uprofile.heading'|trans }}</h1>
+
+    <section class="mb-5">
+        <h2>{{ 'uprofile.section.information.title'|trans }}</h2>
+        <p><strong>{{ 'uprofile.information.first_name'|trans }}:</strong> {{ user.firstName }}</p>
+        <p><strong>{{ 'uprofile.information.last_name'|trans }}:</strong> {{ user.lastName }}</p>
+        <p><strong>{{ 'uprofile.information.email'|trans }}:</strong> {{ user.email }}</p>
+    </section>
+
+    <section>
+        <h2>{{ 'uprofile.section.uaddresses.title'|trans }}</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>{{ 'uaddress.table.street'|trans }}</th>
+                    <th>{{ 'uaddress.table.postal_code'|trans }}</th>
+                    <th>{{ 'uaddress.table.city'|trans }}</th>
+                    <th>{{ 'uaddress.table.country'|trans }}</th>
+                    <th>{{ 'uaddress.table.actions'|trans }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for address in user.addresses %}
+                    <tr>
+                        <td>{{ address.street }}</td>
+                        <td>{{ address.postalCode }}</td>
+                        <td>{{ address.city }}</td>
+                        <td>{{ address.country }}</td>
+                        <td>
+                            <a href="{{ path('app_edit_address', { id: address.id }) }}" class="btn btn-primary btn-sm">
+                                {{ 'uaddress.actions.edit'|trans }}
+                            </a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5" class="text-center">
+                            {{ 'uaddress.no_addresses'|trans }}
+                            <a href="{{ path('app_add_address') }}" class="btn btn-success btn-sm">
+                                {{ 'uaddress.actions.add'|trans }}
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>{{ 'uprofile.section.credit_cards.title'|trans }}</h2>
+        <li><a href="{{ path('app_credit_card') }}">{{ 'credit_card.add_card'|trans }}</a></li>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>{{ 'credit_card.number'|trans }}</th>
+                    <th>{{ 'credit_card.expiration_date'|trans }}</th>
+                    <th>{{ 'credit_card.cvv'|trans }}</th>
+                    <th>{{ 'credit_card.actions'|trans }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for creditCard in creditCards %}
+                    <tr>
+                        <td>{{ creditCard.number|slice(0, 4) }} XXXX XXXX {{ creditCard.number|slice(-4) }}</td>
+                        <td>{{ creditCard.expirationDate }}</td>
+                        <td>{{ creditCard.cvv }}</td>
+                        <td>
+                            <a href="{{ path('app_edit_credit_card', { id: creditCard.id }) }}" class="btn btn-primary btn-sm">
+                                {{ 'credit_card.button.edit'|trans }}
+                            </a>
+                            <form 
+                                action="{{ path('app_delete_credit_card', { id: creditCard.id }) }}" 
+                                method="post" 
+                                style="display: inline-block;"
+                                onsubmit="return confirm('{{ 'credit_card.delete_confirm'|trans }}');"
+                            >
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete_credit_card_' ~ creditCard.id) }}">
+                                <button type="submit" class="btn btn-danger btn-sm">
+                                    {{ 'credit_card.delete'|trans }}
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4" class="text-center">
+                            {{ 'credit_card.no_cards'|trans }}
+                            <a href="{{ path('app_add_credit_card') }}" class="btn btn-success btn-sm">
+                                {{ 'credit_card.add_card'|trans }}
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+{% endblock %}

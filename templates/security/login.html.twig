@@ -1,0 +1,152 @@
+{% block body %}
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Arial', sans-serif;
+        background-color: #4b2a1d;
+        background-image: url('/images/bg.jpg');
+        background-size: cover;
+        background-attachment: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: #fff;
+    }
+
+    .login-container {
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        width: 100%;
+        max-width: 400px;
+        margin: 20px;
+        border: 1px solid #d57b00;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+        color: #d57b00;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 1rem;
+        color: #fff;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 20px;
+        border: 1px solid #d57b00;
+        border-radius: 5px;
+        font-size: 1rem;
+        color: #4b2a1d;
+        background-color: #f1e0b0;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+        border-color: #f0a700;
+        outline: none;
+    }
+
+    .alert {
+        margin-bottom: 20px;
+        padding: 10px;
+        background-color: #f8d7da;
+        border: 1px solid #f5c6cb;
+        color: #721c24;
+        border-radius: 5px;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        background-color: #d57b00;
+        border: none;
+        color: white;
+        font-size: 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #f0a700;
+    }
+
+    .register-link {
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+        font-size: 0.9rem;
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    .register-link:hover {
+        text-decoration: underline;
+    }
+
+    .language-switcher {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .language-switcher form {
+        display: inline-block;
+    }
+
+    .language-switcher button {
+        background-color: transparent;
+        border: none;
+        color: #d57b00;
+        cursor: pointer;
+        font-size: 1rem;
+        text-decoration: underline;
+    }
+
+    .language-switcher button:hover {
+        color: #f0a700;
+    }
+</style>
+
+<div class="login-container">
+    <h1>{{ 'login.title'|trans }}</h1>
+
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    <form action="{{ path('app_login') }}" method="post">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+        <label for="email">{{ 'login.email'|trans }}</label>
+        <input type="text" id="email" name="email" required>
+
+        <label for="password">{{ 'login.password'|trans }}</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">{{ 'login.submit'|trans }}</button>
+    </form>
+
+    <a href="{{ path('app_register') }}" class="register-link">{{ 'login.register_link'|trans }}</a>
+
+    <div class="language-switcher">
+        <form action="{{ path('change_locale', { locale: 'en' }) }}" method="post">
+            <button type="submit">English</button>
+        </form>
+        <form action="{{ path('change_locale', { locale: 'fr' }) }}" method="post">
+            <button type="submit">Français</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

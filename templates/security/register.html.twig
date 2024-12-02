@@ -1,0 +1,125 @@
+{% block body %}
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Arial', sans-serif;
+        background-color: #e3d0b9;
+        background-image: url('/images/bg.jpg');
+        background-size: cover;
+        background-attachment: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: #4b2a1d;
+    }
+
+    .register-container {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+        margin: 20px;
+        border: 1px solid #d0a15d;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+        color: #4b2a1d;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 1rem;
+        color: #4b2a1d;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 20px;
+        border: 1px solid #d0a15d;
+        border-radius: 5px;
+        font-size: 1rem;
+        color: #4b2a1d;
+        background-color: #f9f4e5;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        background-color: #d57b00;
+        border: none;
+        color: #fff;
+        font-size: 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .login-link {
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+        font-size: 0.9rem;
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    ul {
+        margin-top: 10px;
+        padding: 0;
+        color: #721c24;
+        background-color: #f8d7da;
+        border: 1px solid #f5c6cb;
+        list-style-type: none;
+        padding: 10px;
+        border-radius: 5px;
+    }
+</style>
+
+<div class="register-container">
+    <h1>{{ 'register.title'|trans }}</h1>
+
+    <form method="POST" action="{{ path('app_register') }}">
+        <div>
+            <label for="lastName">{{ 'register.last_name'|trans }}</label>
+            <input type="text" id="lastName" name="lastName" value="{{ app.request.get('lastName') }}" required>
+        </div>
+        <div>
+            <label for="firstName">{{ 'register.first_name'|trans }}</label>
+            <input type="text" id="firstName" name="firstName" value="{{ app.request.get('firstName') }}" required>
+        </div>
+        <div>
+            <label for="email">{{ 'register.email'|trans }}</label>
+            <input type="email" id="email" name="email" value="{{ app.request.get('email') }}" required>
+        </div>
+        <div>
+            <label for="plainPassword">{{ 'register.password'|trans }}</label>
+            <input type="password" id="plainPassword" name="plainPassword" required>
+        </div>
+        <div>
+            <button type="submit">{{ 'register.submit'|trans }}</button>
+        </div>
+
+        {% if errors is defined %}
+            <ul>
+                {% for error in errors %}
+                    <li>{{ error.message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </form>
+
+    <a href="{{ path('app_login') }}" class="login-link">{{ 'register.login_link'|trans }}</a>
+</div>
+
+{% endblock %}

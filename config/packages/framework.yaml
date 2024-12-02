@@ -4,7 +4,24 @@ framework:
     #csrf_protection: true
 
     # Note that the session will be started ONLY if you read or write from it.
-    session: true
+    session:
+        enabled: true  # Active les sessions
+        cookie_secure: auto  # Sécurise les cookies en HTTPS si applicable
+
+    # Gestion des traductions
+    translator:
+        enabled: true  # Active le traducteur Symfony
+        default_path: '%kernel.project_dir%/translations'  # Chemin des fichiers de traduction
+        fallback: ['en']  # Langue de secours si une traduction est manquante
+
+    # Locale par défaut
+    default_locale: en  # Langue par défaut de l'application
+
+    # Formats pour la gestion des requêtes
+    request:
+        formats:
+            html: text/html
+            json: application/json
 
     #esi: true
     #fragments: true

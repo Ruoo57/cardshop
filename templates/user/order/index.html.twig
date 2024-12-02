@@ -1,0 +1,132 @@
+{% block styles %}
+<style>
+    body {
+        font-family: 'Verdana', sans-serif;
+        background-color: #0b0d15; 
+        color: #d1d7e0;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1, h3 {
+        text-align: center;
+        color: #00aaff;
+    }
+
+    .container {
+        margin: 0 auto;
+        max-width: 800px;
+        background-color: #14172a; 
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .alert {
+        background-color: #0d111f;
+        border: 1px solid #00aaff;
+        color: #d1d7e0;
+        border-radius: 5px;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    .alert p {
+        margin: 5px 0;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: #1b2035; 
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    table thead tr {
+        background-color: #00aaff;
+        color: #0b0d15; 
+    }
+
+    table th, table td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #2a2f4a;
+    }
+
+    table tbody tr:hover {
+        background-color: #273051;
+    }
+
+    table td {
+        color: #d1d7e0;
+    }
+
+    p {
+        text-align: center;
+        margin-top: 20px;
+        color: #a9b2c3; 
+    }
+
+    .btn-back {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 1rem;
+        color: #fff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        text-align: center;
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-back:hover {
+        background-color: #0056b3;
+        transform: translateY(-3px);
+    }
+</style>
+{% endblock %}
+
+{% block title %}{{ 'order.confirmation.title'|trans }}{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 class="text-center mb-5">{{ 'order.confirmation.thank_you'|trans }}</h1>
+
+    <div class="alert alert-success">
+        <p>{{ 'order.confirmation.success_message'|trans }}</p>
+        <p>{{ 'order.confirmation.order_list_info'|trans }}</p>
+    </div>
+
+    <h3>{{ 'order.confirmation.my_orders'|trans }}</h3>
+    {% if orders is not empty %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>{{ 'order.table.reference'|trans }}</th>
+                    <th>{{ 'order.table.created_at'|trans }}</th>
+                    <th>{{ 'order.table.status'|trans }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                    <tr>
+                        <td>{{ order.id }}</td>
+                        <td>{{ order.reference }}</td>
+                        <td>{{ order.createdAt|date('Y-m-d H:i') }}</td>
+                        <td>{{ order.status|trans }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>{{ 'order.confirmation.no_orders'|trans }}</p>
+    {% endif %}
+
+    <a href="{{ path('app_shop') }}" class="btn-back">{{ 'order.confirmation.back_to_shop'|trans }}</a>
+</div>
+{% endblock %}

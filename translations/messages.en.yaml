@@ -1,0 +1,236 @@
+login:
+    title: "Login"
+    email: "Email"
+    password: "Password"
+    submit: "Login"
+    register_link: "Register here!"
+
+register:
+    title: "Register"
+    last_name: "Last Name"
+    first_name: "First Name"
+    email: "Email"
+    password: "Password"
+    submit: "Sign Up"
+    login_link: "Already have an account? Login here"
+
+profile:
+    title: "Profile"
+    heading: "Profile"
+    first_name: "First Name"
+    last_name: "Last Name"
+    email: "Email"
+    my_address: "My Addresses"
+    address:
+        street: "Street"
+        postal_code: "Postal Code"
+        city: "City"
+        country: "Country"
+        actions: "Actions"
+        edit: "Edit"
+        add: "Add Address"
+        no_addresses: "No addresses found."
+        form:
+            title: "Address"
+            street: "Street"
+            postal_code: "Postal Code"
+            city: "City"
+            country: "Country"
+
+address:
+    table:
+        street: "Street"
+        postal_code: "Postal Code"
+        city: "City"
+        country: "Country"
+        actions: "Actions"
+    actions:
+        edit: "Edit"
+        add: "Add Address"
+    no_addresses: "No addresses found."
+    edit:
+        title: "Edit Address"
+        save: "Save"
+        cancel: "Cancel"
+    form:
+        title: "Address"
+        street: "Street"
+        postal_code: "Postal Code"
+        city: "City"
+        country: "Country"
+
+dashboard:
+    title: "Dashboard"
+    heading: "Dashboard"
+    categories:
+        title: "Categories"
+        name: "Category"
+        product_count: "Number of Products"
+        no_data: "No categories found."
+    orders:
+        title: "Last 5 Orders"
+        reference: "Order Reference"
+        user_name: "User Name"
+        date: "Order Date"
+        no_data: "No orders found."
+    users:
+        title: "User List"
+        last_name: "Last Name"
+        first_name: "First Name"
+        no_data: "No users found."
+    product_availability:
+        title: "Product Availability Ratio"
+        in_stock: "In Stock"
+        out_of_stock: "Out of Stock"
+        pre_order: "Pre-order"
+        products: "Products"
+    sales:
+        title: "Total Sales by Month (Last 12 Months)"
+
+base:
+    title: "Welcome!"
+    nav:
+        brand: "Hearthstone"
+        toggle: "Toggle navigation"
+        profile: "Profile"
+        dashboard: "Dashboard"
+        shop: "Shop"
+        logout: "Logout"
+        add_product: "Add Product"
+        login: "Login"
+        register: "Register"
+
+shop:
+    title: "Shop"
+    welcome: "Welcome to the shop"
+    image_unavailable: "Image unavailable"
+    price: "Price"
+    stock: "Stock"
+    add_to_cart: "Add to Cart"
+    edit: "Edit"
+    delete: "Delete"
+    no_products: "No products available at the moment."
+    cart:
+        product: "Product"
+        quantity: "Quantity"
+        total: "Total"
+        total_price: "Total Price"
+        empty: "Your cart is empty."
+        checkout: "Proceed to Checkout"
+        title: "Cart"
+
+product:
+    edit:
+        title: "Edit Product: %name%"
+        heading: "Edit Product: %name%"
+        save: "Save Changes"
+        back: "Back"
+    add:
+        title: "Add Product"
+        heading: "Add a Product"
+        create: "Create"
+
+form:
+    product:
+        name:
+            label: "Product Name"
+            placeholder: "Enter the product name"
+        price:
+            label: "Price"
+            placeholder: "Enter the price"
+        description:
+            label: "Description"
+            placeholder: "Enter the description"
+        stock:
+            label: "Stock"
+            placeholder: "Enter available stock"
+        status:
+            label: "Status"
+            available: "Available"
+            out_of_stock: "Out of Stock"
+            pre_order: "Pre-order"
+            placeholder: "Choose a status"
+        category:
+            label: "Category"
+            placeholder: "Select a rarity"
+        image:
+            label: "Upload an image"
+            mime_types_message: "Please upload a valid image (JPEG or PNG)."
+
+credit_card:
+    title: "Manage Your Credit Cards"
+    add_card: "Add a Card"
+    save: "Save"
+    list:
+        title: "Your Credit Cards"
+    number: "Number"
+    expiration_date: "Expiration Date"
+    cvv: "CVV"
+    actions: "Actions"
+    delete: "Delete"
+    button:
+        edit: "Edit"
+    delete_confirm: "Are you sure you want to delete this credit card?"
+    no_cards: "You have not saved any credit cards yet."
+    success:
+        added: "Credit card added successfully!"
+        updated: "Credit card updated successfully!"
+        deleted: "Credit card deleted successfully!"
+    edit:
+        title: "Edit"
+        save: "Save Changes"
+        cancel: "Cancel"
+
+
+order:
+    confirmation:
+        title: "Order Confirmation"
+        thank_you: "Thank you for your order!"
+        success_message: "Your order has been successfully registered."
+        order_list_info: "Below is a list of all your past orders:"
+        my_orders: "My Orders"
+        no_orders: "No orders found."
+        back_to_shop: "Back"
+    table:
+        reference: "Reference"
+        created_at: "Creation Date"
+        status: "Status"
+        total: "Total"
+
+uprofile:
+    title: "Profile"
+    heading: "Profile"
+    section:
+        credit_cards:
+            title: "My Credit Cards"
+        information:
+            title: "Your Information"
+        uaddresses:
+            title: "Your Addresses"
+    information:
+        first_name: "First Name"
+        last_name: "Last Name"
+        email: "Email"
+      
+
+uaddress:
+    table:
+        street: "Street"
+        postal_code: "Postal Code"
+        city: "City"
+        country: "Country"
+        actions: "Actions"
+    actions:
+        edit: "Edit"
+        add: "Add Address"
+    no_addresses: "No addresses found."
+    edit:
+        title: "Edit Address"
+        save: "Save"
+        cancel: "Cancel"
+    form:
+        street: "Street"
+        postal_code: "Postal Code"
+        city: "City"
+        country: "Country"
+

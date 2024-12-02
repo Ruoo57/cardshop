@@ -1,0 +1,213 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}
+    {{ 'dashboard.title'|trans }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        body {
+            background-color: #1e1e2e;
+            color: #f5f5f5;
+            font-family: 'Arial', sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #ffc107;
+            margin-bottom: 30px;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: #00aaff;
+            margin: 20px 0;
+            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table thead th {
+            background: #34495e;
+            color: #fff;
+            padding: 10px;
+            text-align: left;
+            font-size: 1rem;
+        }
+
+        table tbody td {
+            background: #2c3e50;
+            color: #f5f5f5;
+            padding: 10px;
+            border-top: 1px solid #34495e;
+        }
+
+        table tbody tr:nth-child(even) td {
+            background: #3d556f;
+        }
+
+        table tbody tr:hover td {
+            background: #456880;
+        }
+
+        .row {
+            display: flex;
+            gap: 20px;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .col-md-4, .col-md-2 {
+            flex: 1;
+            background: #2a2a3b;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            margin: 10px;
+        }
+
+        .col-md-4 h5, .col-md-2 h5 {
+            font-size: 1.2rem;
+            color: #ffc107;
+            margin-bottom: 10px;
+            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        .col-md-4 p, .col-md-2 p {
+            font-size: 1rem;
+            color: #d1d7e0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div id="dashboard-container">
+        <h1>{{ 'dashboard.heading'|trans }}</h1>
+
+        <section>
+            <h3>{{ 'dashboard.categories.title'|trans }}</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>{{ 'dashboard.categories.name'|trans }}</th>
+                        <th>{{ 'dashboard.categories.product_count'|trans }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for category in categoriesWithProductCount %}
+                        <tr>
+                            <td>{{ category.rarity }}</td>
+                            <td>{{ category.productCount }}</td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="2" class="text-center">{{ 'dashboard.categories.no_data'|trans }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h3>{{ 'dashboard.orders.title'|trans }}</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>{{ 'dashboard.orders.reference'|trans }}</th>
+                        <th>{{ 'dashboard.orders.user_name'|trans }}</th>
+                        <th>{{ 'dashboard.orders.date'|trans }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                        <tr>
+                            <td>{{ order.reference }}</td>
+                            <td>{{ order.user.firstName }} {{ order.user.lastName }}</td>
+                            <td>{{ order.createdAt|date('d/m/Y') }}</td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="3" class="text-center">{{ 'dashboard.orders.no_data'|trans }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h3>{{ 'dashboard.users.title'|trans }}</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>{{ 'dashboard.users.last_name'|trans }}</th>
+                        <th>{{ 'dashboard.users.first_name'|trans }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                        <tr>
+                            <td>{{ user.lastName }}</td>
+                            <td>{{ user.firstName }}</td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="2" class="text-center">{{ 'dashboard.users.no_data'|trans }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h3>{{ 'dashboard.product_availability.title'|trans }}</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>{{ 'dashboard.product_availability.in_stock'|trans }}</h5>
+                    <p>{{ inStockCount }} {{ 'dashboard.product_availability.products'|trans }} ({{ inStockRatio|number_format(2) }}%)</p>
+                </div>
+
+                <div class="col-md-4">
+                    <h5>{{ 'dashboard.product_availability.out_of_stock'|trans }}</h5>
+                    <p>{{ outOfStockCount }} {{ 'dashboard.product_availability.products'|trans }} ({{ outOfStockRatio|number_format(2) }}%)</p>
+                </div>
+
+                <div class="col-md-4">
+                    <h5>{{ 'dashboard.product_availability.pre_order'|trans }}</h5>
+                    <p>{{ preOrderCount }} {{ 'dashboard.product_availability.products'|trans }} ({{ preOrderRatio|number_format(2) }}%)</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h3>{{ 'dashboard.sales.title'|trans }}</h3>
+            <div class="row">
+                {% for month, sales in salesPerMonth %}
+                    <div class="col-md-2">
+                        <h5>{{ month }}</h5>
+                        <p>{{ sales|number_format(2) }} €</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+{% endblock %}

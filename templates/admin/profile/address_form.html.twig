@@ -1,0 +1,94 @@
+{% block stylesheets %}
+    <style>
+        body {
+            background: linear-gradient(135deg, #1b1f2a, #2a3b4d);
+            font-family: 'Arial', sans-serif;
+            color: #eaeaea;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #ffc107;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            color: #00aaff;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            color: #fff;
+            background: #2c3e50;
+            border: 1px solid #34495e;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus, select:focus {
+            outline: none;
+            background: #34495e;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px 15px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            background-color: #3498db;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        button:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <h1>{{ button_label|trans }} {{ 'address.form.title'|trans }}</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.street, {'label': 'address.form.street'|trans}) }}
+        {{ form_row(form.postalCode, {'label': 'address.form.postal_code'|trans}) }}
+        {{ form_row(form.city, {'label': 'address.form.city'|trans}) }}
+        {{ form_row(form.country, {'label': 'address.form.country'|trans}) }}
+    {{ form_end(form) }}
+{% endblock %}

@@ -1,0 +1,28 @@
+{
+  "name": "cardshop",
+  "version": "1.0.0",
+  "description": "Gestion des assets pour Cardshop",
+  "main": "index.js",
+  "scripts": {
+    "dev": "encore dev",
+    "build": "encore production"
+  },
+  "dependencies": {
+    "@babel/preset-env": "^7.26.0",
+    "@hotwired/turbo": "^7.0.0",
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.3",
+    "stimulus": "^3.2.2",
+    "stimulus-use": "^0.52.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@symfony/stimulus-bridge": "^3.2.2",
+    "@symfony/webpack-encore": "^5.0.1",
+    "sass": "^1.81.0",
+    "sass-loader": "^16.0.1",
+    "webpack": "^5.96.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-notifier": "^1.15.0"
+  }
+}

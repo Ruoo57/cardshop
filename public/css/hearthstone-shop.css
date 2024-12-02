@@ -1,0 +1,111 @@
+/* Style général pour la page */
+body {
+    font-family: 'Belwe', serif, 'Times New Roman', sans-serif;
+    background: #222 url('/images/hearthstone-background.avif') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+/* Titre principal */
+h1 {
+    font-size: 3rem;
+    text-align: center;
+    margin: 20px 0;
+    color: #ffcc00;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Liste des produits */
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Carte de produit */
+.product {
+    background: rgba(0, 0, 0, 0.8);
+    border: 3px solid #ffcc00;
+    border-radius: 10px;
+    padding: 15px;
+    width: 300px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.9);
+}
+
+/* Nom et description du produit */
+.product h2 {
+    font-size: 1.5rem;
+    margin: 10px 0;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+.product p {
+    font-size: 1rem;
+    margin: 5px 0;
+    color: #ddd;
+}
+
+/* Image des produits */
+.product img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin: 10px 0;
+    border: 2px solid #ffcc00;
+}
+
+/* Actions (boutons) */
+.actions {
+    margin-top: 15px;
+}
+
+.actions a,
+.actions button {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    background: #007bff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.actions a:hover,
+.actions button:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+}
+
+.actions .btn-danger {
+    background: #dc3545;
+}
+
+.actions .btn-danger:hover {
+    background: #b02a37;
+}
+
+/* Message lorsqu'il n'y a pas de produit */
+.product-list p {
+    font-size: 1.2rem;
+    color: #ccc;
+    text-align: center;
+    margin: 30px 0;
+}

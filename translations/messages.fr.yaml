@@ -1,0 +1,240 @@
+login:
+    title: "Connexion"
+    email: "E-mail"
+    password: "Mot de passe"
+    submit: "Se connecter"
+    register_link: "Inscrivez-vous ici !"
+
+register:
+    title: "Inscription"
+    last_name: "Nom"
+    first_name: "Prénom"
+    email: "E-mail"
+    password: "Mot de passe"
+    submit: "S'inscrire"
+    login_link: "Vous avez déjà un compte ? Connectez-vous ici"
+
+profile:
+    title: "Profil"
+    heading: "Profil"
+    first_name: "Prénom"
+    last_name: "Nom"
+    email: "E-mail"
+    my_address: "Mes adresses"
+    address:
+        street: "Rue"
+        postal_code: "Code postal"
+        city: "Ville"
+        country: "Pays"
+        actions: "Actions"
+        edit: "Modifier"
+        add: "Ajouter une adresse"
+        no_addresses: "Aucune adresse trouvée."
+        form:
+            title: "Adresse"
+            street: "Rue"
+            postal_code: "Code postal"
+            city: "Ville"
+            country: "Pays"
+
+address:
+    table:
+        street: "Rue"
+        postal_code: "Code postal"
+        city: "Ville"
+        country: "Pays"
+        actions: "Actions"
+    actions:
+        edit: "Modifier"
+        add: "Ajouter une adresse"
+    no_addresses: "Aucune adresse trouvée."
+    edit:
+        title: "Modifier l'adresse"
+        save: "Enregistrer"
+        cancel: "Annuler"
+    form:
+        title: "Adresse"
+        street: "Rue"
+        postal_code: "Code postal"
+        city: "Ville"
+        country: "Pays"
+
+dashboard:
+    title: "Tableau de bord"
+    heading: "Tableau de bord"
+    categories:
+        title: "Catégories"
+        name: "Catégorie"
+        product_count: "Nombre de produits"
+        no_data: "Aucune catégorie trouvée."
+    orders:
+        title: "Les 5 dernières commandes"
+        reference: "Référence de commande"
+        user_name: "Nom de l'utilisateur"
+        date: "Date de la commande"
+        no_data: "Aucune commande trouvée."
+    users:
+        title: "Liste des utilisateurs"
+        last_name: "Nom"
+        first_name: "Prénom"
+        no_data: "Aucun utilisateur trouvé."
+    product_availability:
+        title: "Ratio de disponibilité des produits"
+        in_stock: "En stock"
+        out_of_stock: "Rupture de stock"
+        pre_order: "En précommande"
+        products: "Produits"
+    sales:
+        title: "Montant total des ventes par mois (12 derniers mois)"
+
+base:
+    title: "Bienvenue !"
+    nav:
+        brand: "Hearthstone"
+        toggle: "Basculer la navigation"
+        profile: "Profil"
+        dashboard: "Tableau de bord"
+        shop: "Boutique"
+        logout: "Se déconnecter"
+        add_product: "Ajouter un produit"
+        login: "Connexion"
+        register: "Inscription"
+    footer: "Boutique Hearthstone"
+
+shop:
+    title: "Boutique"
+    welcome: "Bienvenue dans la boutique"
+    image_unavailable: "Image indisponible"
+    price: "Prix"
+    stock: "Stock"
+    add_to_cart: "Ajouter au panier"
+    edit: "Modifier"
+    delete: "Supprimer"
+    no_products: "Aucun produit disponible pour le moment."
+    cart:
+        product: "Produit"
+        quantity: "Quantité"
+        total: "Total"
+        total_price: "Prix total"
+        empty: "Votre panier est vide."
+        checkout: "Passer à la caisse"
+        title: "Panier"
+
+
+product:
+    edit:
+        title: "Modifier le produit : %name%"
+        heading: "Modifier le produit : %name%"
+        save: "Enregistrer les modifications"
+        back: "Retour"
+    add:
+        title: "Ajouter un produit"
+        heading: "Ajouter un produit"
+        create: "Créer"
+
+form:
+    product:
+        name:
+            label: "Nom du produit"
+            placeholder: "Entrez le nom du produit"
+        price:
+            label: "Prix"
+            placeholder: "Entrez le prix"
+        description:
+            label: "Description"
+            placeholder: "Entrez la description"
+        stock:
+            label: "Stock"
+            placeholder: "Entrez la quantité disponible"
+        status:
+            label: "Statut"
+            available: "Disponible"
+            out_of_stock: "Rupture de stock"
+            pre_order: "En précommande"
+            placeholder: "Choisissez un statut"
+        category:
+            label: "Catégorie"
+            placeholder: "Sélectionnez une rareté"
+        image:
+            label: "Télécharger une image"
+            mime_types_message: "Veuillez télécharger une image valide (JPEG ou PNG)."
+
+credit_card:
+    title: "Gérer vos cartes bancaires"
+    add_card: "Ajouter une carte"
+    save: "Enregistrer"
+    list:
+        title: "Vos cartes bancaires"
+    number: "Numéro"
+    expiration_date: "Date d'expiration"
+    cvv: "CVV"
+    actions: "Actions"
+    delete: "Supprimer"
+    delete_confirm: "Êtes-vous sûr de vouloir supprimer cette carte bancaire ?"
+    no_cards: "Vous n'avez enregistré aucune carte bancaire pour le moment."
+    success:
+        added: "Carte bancaire ajoutée avec succès !"
+        updated: "Carte bancaire mise à jour avec succès !"
+        deleted: "Carte bancaire supprimée avec succès !"
+    edit:
+        title: "Modifier"
+        save: "Enregistrer les modifications"
+        cancel: "Annuler"
+    button:
+        edit: "Modifier"
+
+
+order:
+    confirmation:
+        title: "Confirmation de commande"
+        thank_you: "Merci pour votre commande !"
+        success_message: "Votre commande a été enregistrée avec succès."
+        order_list_info: "Voici la liste de toutes vos commandes passées :"
+        my_orders: "Mes commandes"
+        no_orders: "Aucune commande trouvée."
+        back_to_shop: "Retour"
+
+    table:
+        reference: "Référence"
+        created_at: "Date de création"
+        status: "Statut"
+        total: "Total"
+
+uprofile:
+    title: "Profil"
+    heading: "Profil"
+    section:
+        credit_cards:
+            title: "Mes cartes bancaires"
+        information:
+            title: "Vos Informations"
+        uaddresses:
+            title: "Vos Adresses"
+    information:
+        first_name: "Prénom"
+        last_name: "Nom"
+        email: "E-mail"
+        
+
+
+uaddress:
+    table:
+        street: "Rue"
+        postal_code: "Code Postal"
+        city: "Ville"
+        country: "Pays"
+        actions: "Actions"
+    actions:
+        edit: "Modifier"
+        add: "Ajouter une adresse"
+    no_addresses: "Aucune adresse trouvée."
+    edit:
+        title: "Modifier l'adresse"
+        save: "Enregistrer"
+        cancel: "Annuler"
+    form:
+        street: "Rue"
+        postal_code: "Code Postal"
+        city: "Ville"
+        country: "Pays"
+

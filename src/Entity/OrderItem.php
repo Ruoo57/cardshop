@@ -10,48 +10,75 @@ class OrderItem
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(type: 'integer')]
     private ?int $id = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $productPrice = null;
+    #[ORM\Column(type: 'float')]
+    private float $productPrice;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $quantities = null;
+    #[ORM\Column(type: 'integer')]
+    private int $quantity;
+
+    #[ORM\ManyToOne(targetEntity: Product::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Product $product = null;
+
+    #[ORM\ManyToOne(targetEntity: Order::class, inversedBy: 'orderItems')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Order $order = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function setId(int $id): static
+    public function setId(int $id): self
     {
         $this->id = $id;
-
         return $this;
     }
 
-    public function getProductPrice(): ?int
+    public function getProductPrice(): float
     {
         return $this->productPrice;
     }
 
-    public function setProductPrice(?int $productPrice): static
+    public function setProductPrice(float $productPrice): self
     {
         $this->productPrice = $productPrice;
-
         return $this;
     }
 
-    public function getQuantities(): ?int
+    public function getQuantity(): int
     {
-        return $this->quantities;
+        return $this->quantity;
     }
 
-    public function setQuantities(?int $quantities): static
+    public function setQuantity(int $quantity): self
     {
-        $this->quantities = $quantities;
+        $this->quantity = $quantity;
+        return $this;
+    }
 
+    public function getProduct(): ?Product
+    {
+        return $this->product;
+    }
+
+    public function setProduct(?Product $product): self
+    {
+        $this->product = $product;
+        return $this;
+    }
+
+    public function getOrder(): ?Order
+    {
+        return $this->order;
+    }
+
+    public function setOrder(?Order $order): self
+    {
+        $this->order = $order;
         return $this;
     }
 }

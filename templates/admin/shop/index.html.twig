@@ -1,0 +1,145 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}{{ 'shop.title'|trans }}{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        body {
+            background: linear-gradient(135deg, #1b1f2a, #2a3b4d);
+            font-family: 'Arial', sans-serif;
+            color: #eaeaea;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #ffc107;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+            margin-bottom: 30px;
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #34495e;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
+        }
+
+        .card-img-top {
+            border-bottom: 1px solid #34495e;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            color: #ffc107;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            font-size: 1rem;
+            color: #d1d7e0;
+            margin-bottom: 10px;
+        }
+
+        .card-footer {
+            background: rgba(255, 255, 255, 0.05);
+            border-top: 1px solid #34495e;
+            padding: 10px;
+        }
+
+        .btn {
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #fff;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-warning {
+            background-color: #f1c40f;
+            border: none;
+        }
+
+        .btn-warning:hover {
+            background-color: #f39c12;
+            transform: translateY(-3px);
+        }
+
+        .btn-danger {
+            background-color: #e74c3c;
+            border: none;
+        }
+
+        .btn-danger:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+        }
+
+        .alert {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #34495e;
+            border-radius: 5px;
+            color: #d1d7e0;
+            padding: 20px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1 class="text-center mb-5">{{ 'shop.welcome'|trans }}</h1>
+
+        <!-- Affichage des messages de succès -->
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        {% if products|length > 0 %}
+            <div class="row g-4">
+                {% for product in products %}
+                    <div class="col-md-4">
+                        <div class="card h-100">
+                            {% if product.image %}
+                                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                            {% else %}
+                                <img src="/images/placeholder.png" class="card-img-top" alt="{{ 'shop.image_unavailable'|trans }}">
+                            {% endif %}
+                            <div class="card-body">
+                                <h5 class="card-title">{{ product.name }}</h5>
+                                <p class="card-text">{{ product.description }}</p>
+                                <p class="card-text"><strong>{{ 'shop.price'|trans }}:</strong> {{ product.price }} €</p>
+                                <p class="card-text"><strong>{{ 'shop.stock'|trans }}:</strong> {{ product.stock }}</p>
+                            </div>
+                            <div class="card-footer d-flex justify-content-between">
+                                <a href="{{ path('admin_product_edit', { id: product.id }) }}" class="btn btn-warning">{{ 'shop.edit'|trans }}</a>
+                                <form action="{{ path('admin_product_delete', { id: product.id }) }}" method="POST">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id) }}">
+                                    <button type="submit" class="btn btn-danger">{{ 'shop.delete'|trans }}</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="alert alert-info text-center">
+                {{ 'shop.no_products'|trans }}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
