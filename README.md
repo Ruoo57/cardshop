@@ -1,3 +1,27 @@
+pour se connecter avec un compte admin : 
+
+admin0@gmail.com
+password
+
+pour se connecter avec un compte utilisateur :
+
+Vous pouvez en créer un depuis la page register. Le lien peut se faire via la page connexion.
+
+
+
+La traduction ne pourra se faire uniquement sur la page de connexion.
+La traduction se fera par la suite sur toutes les pages.
+Pour se déconnecter ça sera le logo Hearthstone pour les utilisateurs et les admins ça sera "logout" ou "se déconnecter" suivant la langue choisie.
+
+
+
+
+
+
+
+
+
+
 # Symfony 7.1 Boilerplate 
 
 Attention : Il vous faut PHP 8.2 pour faire fonctionner ce projet si vous avez PHP 8.1 utiliser la branche symfony64 du repository.
